@@ -10,23 +10,57 @@
 </head>
 
 <body>
-    <nav class="container-fluid fs-xl">
-        <ul class="nav justify-content-between">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Logo</a>
-            </li>
-            <li class="nav-item">
-                <input class="form-control" type="search" placeholder="Search" aria-label="Search" />
-                <button class="btn-solid btn-icon theme-secondary" type="submit">
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">login</a>
-            </li>
-        </ul>
+    <nav class="navbar bg-1 fg-2">
+        <div class="container-fluid">
+            <a class="navbar-brand">Navbar</a>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn-outline theme-success" type="submit">Search</button>
+            </form>
+            <a class="nav-link" href="#">Login</a>
+        </div>
+        <div class="container justify-content-center">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sala de estar</a>
+                    <a class="nav-link" href="#">Quarto</a>
+                    <a class="nav-link" href="#">Banheiro</a>
+                    <a class="nav-link" href="#">Escritorio</a>
+                    <a class="nav-link" href="#">Cozinha</a>
+                </li>
+            </ul>
+        </div>
     </nav>
 
-    <main>
+    <main class="container">
+        <!-- Seção Hero -->
+        <section class="container m-3 bg-secondary justyfy-content-center">
+            <section id="inicio" class="container-fluid py-5 bg-dark " data-bs-theme="dark">
+                <div class="row">
+                    <div class="col-lg ">
+                        <div class="p-3 text-center text-light">
+                            <div>
+                                <h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h1>
+                            </div>
+                            <div>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-primary">Ver Catalogo</button>
+                                <button type="button" class="btn btn-outline-light">Fale conosco</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg text-center">
+                        <img src="img/apertoDeMaos.jpg" height="200px" width="400px" alt="">
+                    </div>
+                </div>
+            </section>
+        </section>
 
+        <section class="Container">
+            <!-- promoções -->
+        </section>
     </main>
 
     <footer>
