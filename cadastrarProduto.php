@@ -4,21 +4,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $nome =  $_POST['nome'];
     $categoria = $_POST['categoria'];
-    $quant = $_POST['quant'];
+    $quantidade = $_POST['quantidade'];
     $preco = $_POST['preco'];
     $descricao = $_POST['descricao'];
 
     require("conexao.php");
 
-    $inserir = "INSERT INTO produto (nome, categoria, quantidade, preco, descricao) VALUES ('$nome','$categoria','$quant','$preco','$descricao')";
+    $inserir = "INSERT INTO produto (nome, categoria, quantidade, preco, descricao) VALUES (?,?,?,?,?)";
 
-    if (mysqli_query($conexao, $inserir)) {
+    $stmt = mysqli_prepare($conexao, $inserir);
+
+
+    mysqli_stmt_bind_param(
+        $stmt,
+        "sssss",
+        $nome,
+        $categoria,
+        $quantidade,
+        $preco,
+        $descricao
+    );
+
+
+    if (mysqli_stmt_execute($stmt)) {
 
         echo "
         <script>
 
         alert('Cadastro Realizado com sucesso!');
-        window.location.href = 'cadastro.php';
+        window.location.href = 'cadastrarProduto.php';
         
         </script>";
         exit();
@@ -26,38 +40,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "
         <script>
 
-        alert('Erro ao cadastrar:" . mysqli_error($conexao)."';
+        alert('Erro ao cadastrar:';
         window.history.back();
         
         </script>";
         exit();
     }
+    mysqli_stmt_close($stmt);
+    mysqli_close($conexao);
 }
 
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Curso</title>
 </head>
+
 <body>
     <h2>Cadastro de Curso</h2>
-    
-    <form method="post" action="">
+
+    <form method="POST" action="">
         <label>Nome: </label>
         <input type="text" name="nome"> <br>
-    
+
         <label>Categoria: </label>
         <input type="text" name="categoria"> <br>
 
         <label>Quantidade: </label>
-        <input type="text" name="quantidade"> <br>
+        <input type="number" name="quantidade"> <br>
 
         <label>preco: </label>
-        <input type="text" name="preco"> <br>
+        <input type="number" name="preco"> <br>
 
         <label>descricao: </label>
         <input type="text" name="descricao"> <br>
@@ -66,4 +84,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button type="submit">Cadastrar</button>
     </form>
 </body>
+
 </html>
