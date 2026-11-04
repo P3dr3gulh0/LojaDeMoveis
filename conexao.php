@@ -1,5 +1,6 @@
 <?php
 
+//Conecta ao banco de dados
 $conexao = mysqli_connect(
     "localhost",
     "root",
@@ -8,10 +9,11 @@ $conexao = mysqli_connect(
     3306
 );
 
-if(!$conexao){
-    die("Não foi possível conectar ao banco de dados.". mysqli_connect_error());
+if (!$conexao) {
+    die("Erro ao conectar ao banco de dados.");
 }
 
-mysqli_set_charset($conexao,"utf8mb4");
+//Configura caracteres especiais
+mysqli_set_charset($conexao, "utf8mb4");
 
 ?>
