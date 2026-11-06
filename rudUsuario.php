@@ -30,9 +30,9 @@ $resultado = mysqli_query(
     // ORDER BY organiza os registros pelo ID em ordem decrescente.
     // DESC faz com que os maiores IDs apareçam primeiro.
     $conexao,
-    "SELECT idContato, nome, email, telefone, assunto, mensagem
-     FROM contato
-     ORDER BY idContato DESC"
+    "SELECT idUsuario, nome, email, permissao 
+     FROM usuario
+     ORDER BY idUsuario DESC"
 );
 
 // Verifica se ocorreu algum erro na execução da consulta.
@@ -98,19 +98,15 @@ function h($valor)
                         <th scope="col">Id</th>
                         <th scope="col">Nome</th>
                         <th scope="col">E-mail</th>
-                        <th scope="col">Assunto</th>
-                        <th scope="col">Mensagem</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php while ($linha = mysqli_fetch_assoc($resultado)): ?>
                         <tr>
-                            <td><?= h($linha['idContato']) ?></td>
+                            <td><?= h($linha['idUsuario']) ?></td>
                             <td><?= h($linha['nome']) ?></td>
                             <td><?= h($linha['email']) ?></td>
-                            <td><?= h($linha['telefone']) ?></td>
-                            <td><?= h($linha['assunto']) ?></td>
-                            <td style="min-width:220px;white-space:pre-wrap"><?= h($linha['mensagem']) ?></td>
+                            <td><?= h($linha['permissao']) ?></td>
                         </tr>
                     <?php endwhile; ?>
                 </tbody>

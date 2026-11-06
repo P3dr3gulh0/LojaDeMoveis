@@ -54,7 +54,7 @@ if ($usuario && password_verify($senha, $usuario["senha_hash"])) {
 }
 
 // Login incorreto
-header("Location: login.php?erro=1");
+header("Location: login/login.php?erro=1");
 exit;
 
 ?>
